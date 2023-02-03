@@ -1,0 +1,31 @@
+{% extends 'djf/master.html' %}
+
+{% block content %}
+
+        {% include 'djf/components/section_welcome.html' %}
+
+<div class="container mx-auto">
+
+        {% if object_list %}
+
+            <div class="">
+                {% for survey in page_obj %}
+                    {% include 'djf/components/card_list_survey.html' %}
+                {% endfor %}
+            </div>
+
+        {% else %}
+
+            {% include 'djf/components/empty_state.html' %}
+
+        {% endif %}
+    </div>
+
+    {% include 'djf/components/modal_delete.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    {% include 'djf/components/modal_delete_js.html' %}
+{% endblock %}
